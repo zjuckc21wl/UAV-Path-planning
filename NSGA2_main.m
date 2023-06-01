@@ -1,21 +1,22 @@
+%
 clear all;
 clc;
 close all;
 tic
 global DEM safth hmax scfitness;
-a=load('XYZmesh.mat');%¶ÁÈ¡Êý×Ö¸ß³ÌÐÅÏ¢DEM
+a=load('XYZmesh.mat');%ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ö¸ß³ï¿½ï¿½ï¿½Ï¢DEM
 DEM=a;
-safth=60;%°²È«¸ß¶È60m
+safth=60;%ï¿½ï¿½È«ï¿½ß¶ï¿½60m
 
 %DEM.Z=randi([0,1000],size(DEM.Z,1),size(DEM.Z,2));
-hmax=max(max(DEM.Z));%×î¸ßµã
-hmin=min(min(DEM.Z));%×îµÍµã
+hmax=max(max(DEM.Z));%ï¿½ï¿½ßµï¿½
+hmin=min(min(DEM.Z));%ï¿½ï¿½Íµï¿½
 
-ganum=100;%µü´ú´ÎÊý
-dnanum=50;%ÖÖÈºÊý
+ganum=100;%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+dnanum=50;%ï¿½ï¿½Èºï¿½ï¿½
 
 dnalength=50;
-childrennum=dnanum;%×Ó´úÖÖÈºÊý
+childrennum=dnanum;%ï¿½Ó´ï¿½ï¿½ï¿½Èºï¿½ï¿½
 
 np=zeros(1,dnanum);
 
@@ -32,10 +33,10 @@ scfitness=zeros(dnanum,3);
 congestion=zeros(1,dnanum);
 
 startpoint=[1,1,100];
-goalpoint=[101,101,100];%ÆðµãºÍÖÕµã×ø±ê
+goalpoint=[101,101,100];%ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½
 
 startpoint(3)=DEM.Z(startpoint(1),startpoint(2))+safth;
-goalpoint(3)=DEM.Z(goalpoint(1),goalpoint(2))+safth;%ÕæÕýµÄÆðµãºÍÖÕµã¸ß¶ÈÎªµØÐÎÊµ¼Ê¸ß¶È+°²È«¸ß¶Èsafth
+goalpoint(3)=DEM.Z(goalpoint(1),goalpoint(2))+safth;%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ß¶ï¿½Îªï¿½ï¿½ï¿½ï¿½Êµï¿½Ê¸ß¶ï¿½+ï¿½ï¿½È«ï¿½ß¶ï¿½safth
 
 dna1=zeros(dnanum,dnalength+1,3);
 dna2=zeros(dnanum,dnalength+1,3);
@@ -228,18 +229,18 @@ resultdnafitness3
 
 
 
-figure(2);%ÓÃÀ´»­´ú¼Ûº¯ÊýËæµü´ú´ÎÊýµÄ±ä»¯Öµ
+figure(2);%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ûºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ä»¯Öµ
 hold on
-plot(1:1:ganum+1,totalfitness(1,:,1)/10-randi([40 80],1,1),'k*--','LineWidth',2);%CPFIBAËã·¨
+plot(1:1:ganum+1,totalfitness(1,:,1)/10-randi([40 80],1,1),'k*--','LineWidth',2);%CPFIBAï¿½ã·¨
 hold on;
-plot(1:1:ganum+1,totalfitness(2,:,1)/10-randi([20 30],1,1),'bo--','LineWidth',2);%DEBAËã·¨
+plot(1:1:ganum+1,totalfitness(2,:,1)/10-randi([20 30],1,1),'bo--','LineWidth',2);%DEBAï¿½ã·¨
 %plot(1:1:ganum+1,totalfitness(2,:,1)/10-randi([40 80],1,1),'bo--','LineWidth',2);
 hold on;
-plot(1:1:ganum+1,totalfitness(3,:,1)/10+randi([40 80],1,1),'rx--','LineWidth',2);%BAËã·¨
+plot(1:1:ganum+1,totalfitness(3,:,1)/10+randi([40 80],1,1),'rx--','LineWidth',2);%BAï¿½ã·¨
 %plot(1:1:ganum+1,totalfitness(3,:,1)/10-randi([40 80],1,1),'rx--','LineWidth',2);
 hold on;
-%£¿£¿£¿£¿£¿£¿ÎªÊ²Ã´ÓÐµÄÊÇrandi([40 80],1,1)ÓÐµÄÊÇrandi([20 30],1,1)¶øÇÒÕý¸º²»Ò»Ñù
-%Í¼Ïñ´°¿ÚÉèÖÃ
+%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÊ²Ã´ï¿½Ðµï¿½ï¿½ï¿½randi([40 80],1,1)ï¿½Ðµï¿½ï¿½ï¿½randi([20 30],1,1)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+%Í¼ï¿½ñ´°¿ï¿½ï¿½ï¿½ï¿½ï¿½
 legend('CPFIBA','DEBA','BA');
 xlabel('number of iterations/n');
 ylabel('flight objective function value/ObjVal');
@@ -256,26 +257,26 @@ hold on;
 
 
 
-figure(5);%ÓÃÀ´»­UAVÂ·¾¶
+figure(5);%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UAVÂ·ï¿½ï¿½
 title('The 3D UAV path planning simulation comparision');
     
     for i=1:1:3   %i=1 CPFIBA i=2 DEBA i=3 BA
 
          
     plot3(resultdna1(i,:,1),resultdna1(i,:,2),resultdna1(i,:,3),'k*--','LineWidth',2);
-    hold on; %CPFIBAËã·¨ÏÂµÄB-ÑùÌõÇúÏß²åÖµ»æÖÆ£¬ËµÃ÷resultdna1°üº¬ÁËÑùÌõ²åÖµ½á¹û
+    hold on; %CPFIBAï¿½ã·¨ï¿½Âµï¿½B-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß²ï¿½Öµï¿½ï¿½ï¿½Æ£ï¿½Ëµï¿½ï¿½resultdna1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½
     
     plot3(resultdna2(i,:,1),resultdna2(i,:,2),resultdna2(i,:,3),'bo--','LineWidth',2);
-    hold on;%DEBAËã·¨ÏÂµÄB-ÑùÌõÇúÏß²åÖµ»æÖÆ
+    hold on;%DEBAï¿½ã·¨ï¿½Âµï¿½B-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß²ï¿½Öµï¿½ï¿½ï¿½ï¿½
     
     plot3(resultdna3(i,:,1),resultdna3(i,:,2),resultdna3(i,:,3),'rx--','LineWidth',2);
-    hold on;%BAËã·¨ÏÂµÄB-ÑùÌõÇúÏß²åÖµ»æÖÆ
+    hold on;%BAï¿½ã·¨ï¿½Âµï¿½B-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß²ï¿½Öµï¿½ï¿½ï¿½ï¿½
     
     stem3(resultdna1(i,:,1),resultdna1(i,:,2),resultdna1(i,:,3),'k*--');
     stem3(resultdna2(i,:,1),resultdna2(i,:,2),resultdna2(i,:,3),'bo--');
-    stem3(resultdna3(i,:,1),resultdna3(i,:,2),resultdna3(i,:,3),'rx--');%»æÖÆÀëÉ¢Êý¾ÝÐòÁÐ
+    stem3(resultdna3(i,:,1),resultdna3(i,:,2),resultdna3(i,:,3),'rx--');%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     
-    %Í¼Ïñ´°¿ÚÉèÖÃ
+    %Í¼ï¿½ñ´°¿ï¿½ï¿½ï¿½ï¿½ï¿½
     legend('CPFIBA','DEBA','BA');
     set(gcf,'Position',[100 100 260 220]);
     set(gca,'Position',[.13 .17 .75 .74]);
